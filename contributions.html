@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contributions by Field | Recognize the Erased</title>
-    <!-- Tailwind CSS for styling -->
+          <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
 
@@ -32,8 +33,23 @@
             }
         }
     </script>
+	
+	<!--
+	Rationale for Design and Structure (Contributions Page)
+
+ In order to preserve uniformity throughout a multi-page website with numerous sections and recurring elements, this page employs Tailwind CSS for layout and styling.
+ Without coding a lot of new CSS, controlling spacing, alignment, colors, and responsiveness was made simpler with Tailwind's utility classes.
+ 
+ In order to clearly and easily examine the many categories (Science & Medicine, Arts & Culture, Technology, Social Movements, and Censorship) in the Contributions section, I decided to use a card-based grid structure.  Every card stands for
+ a category and connects to a site with more information, enabling visitors to rationally traverse the content.
+ 
+ I chose to utilize Font Awesome icons for each category rather than the photos I had originally thought about using.  Icons, such as a flask for science, music for the arts, and a microchip for technology, swiftly convey message.
+ while maintaining a tidy and uniform layout.  Additionally, using icons prevents problems with cropping, picture scaling, and visual inconsistencies on various screen sizes.
+ 
+ This method offers visual interest and distinct category identification while maintaining the emphasis on historical details and accessibility rather than ornamental imagery.
+ 	-->
 </head>
-<body class="bg-brand-cream text-brand-dark flex flex-col min-h-screen">
+<body class="bg-brand-cream text-brand-dark flex flex-col min-h-screen bg-brand-cream">
 
     <!-- Navigation -->
     <nav class="bg-brand-brown text-white shadow-lg sticky top-0 z-50">
