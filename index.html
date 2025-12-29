@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recognize the Erased | Honoring Contributions</title>
-    <!-- Tailwind CSS for styling -->
+       <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Merriweather for headings (dignified), Lato for body (readable) -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
 
     <script>
@@ -32,6 +33,17 @@
             }
         }
     </script>
+	<!--
+	Overall Justification (Index Page)
+
+   The entire website is built upon this index page. 
+   In order to preserve consistency and fluidity throughout the project, many of the layout structures, utility classes, and design elements used here are purposefully duplicated across other pages.
+
+   The website is kept visually consistent and easier to maintain by centralizing common code patterns (navigation, grid layouts, Tailwind CSS tools, and Font Awesome icons).  This method guarantees that modifications to shared elements can be performed smoothly across several sections and minimizes redundancy.
+
+   Resources: - References and outside inspiration are listed in the Resources section.
+   For transparency and context, links to movies and other resources that informed design decisions are provided.
+	-->
     <style>
         /* Custom scrollbar for webkit */
         ::-webkit-scrollbar {
@@ -91,7 +103,7 @@
         <!-- Mobile Menu (Hidden by default) -->
        
             <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-brand-gold">
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3"> 
                <a href="index.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-brand-gold hover:bg-brand-brown">Home</a>
                 <a href="about.html" class="block px-3 py-2 rounded-md text-base font-medium text-white hover:text-brand-gold hover:bg-brand-brown">About</a>
                 <a href="contributions.html" class="block px-3 py-2 rounded-md text-base font-medium text-brand-gold bg-brand-brown">Contributions</a>
@@ -286,5 +298,4 @@
         });
     </script>
 </body>
-
 </html>
