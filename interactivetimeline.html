@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Interactive Timeline | Recognize the Erased</title>
-    <!-- Tailwind CSS for styling -->
+          <!-- Tailwind CSS for styling -->
     <script src="https://cdn.tailwindcss.com"></script>
+
     <!-- Font Awesome for Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Merriweather:wght@300;400;700;900&display=swap" rel="stylesheet">
 
@@ -32,6 +33,19 @@
             }
         }
     </script>
+	<!--
+	This page helps visitors visualize how acts of repression and deleted contributions develop over time by presenting historical events in a chronological timeline.  Time is represented by a vertical center line, with
+    To enhance readability and avoid clutter, events alternate between the left and right sides.
+	
+	Instead of using automatic layout logic, left and right placement is managed by straightforward CSS classes, allowing each event to continue in the regular document flow.
+    This guarantees that entries appropriately stack from top to bottom while preserving a distinct visual framework.
+	
+	Instead of going to different pages for every event, interactive modals are employed.  This keeps the experience focused and ongoing by enabling users to investigate more historical context without leaving the timeline.  JavaScript
+    is restricted to simple click events for these modals' opening and closure.
+
+    Tailwind utility classes and custom CSS are used to strike a balance between flexibility and structure.  While custom styles handle timeline-specific aspects like the center line, event markers, and directional arrows, Tailwind controls typography, responsiveness, and spacing.
+    All things considered, these decisions promote historical narrative, accessibility, and clarity while maintaining an intuitive and user-friendly design.
+	-->
     <style>
         /* Custom styles for the timeline */
         .timeline {
@@ -39,15 +53,11 @@
         }
 
         /* The vertical line */
-        .timeline::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            background-color: #5B7C99; /* brand-blue */
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -2px;
+        .timeline::before { content: '';
+           position: absolute; width: 4px;
+		   background-color: #5B7C99;  
+		   /* brand-blue */ 
+		   top: 0; bottom: 0; left: 50%; margin-left: -2px;
             /* Hide the line on very small screens */
             @media (max-width: 640px) {
                 left: 20px;
@@ -97,31 +107,30 @@
             cursor: pointer; 
         }
 
-        /* Desktop Left-side item positioning */
-        .left-item {
-            left: 0;
-            width: 45%;
-        }
-
-        /* Desktop Right-side item positioning */
-        .right-item {
-            left: 55%;
-            width: 45%;
-        }
-
+       .left-item{
+	   width: 45%;
+	   margin-right: auto;
+	   }
+	   
+	   .right-item{
+	     width: 45%;
+	   margin-left: auto;
+	   }
+	   
+	   
         /* Responsive timeline layout for mobile */
         @media (max-width: 640px) {
             .timeline-item-container {
-                margin-left: 50px; /* Space for the line and dots */
-                padding-left: 20px;
-                width: calc(100% - 50px);
-            }
-            .left-item, .right-item {
-                left: 0;
-                width: 100%;
+			   margin-left: 50px;  /* Space for the line and dots */
+			   padding-left: 0;
+			   width: calc(100% - 50px);
+              }
+             .left-item, .right-item {
+               left: 0;
+              width: 100%;
             }
             /* Remove the pointer arrows on mobile for simplicity */
-            .left-item::after, .right-item::after {
+           .left-item::after, .right-item::after {
                 content: none;
             }
         }
@@ -256,7 +265,7 @@
     </header>
 
     <!-- Main Timeline Content -->
-    <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <main class="flex-grow max-w-5xl mx-auto px-4 sm:px-8 py-16">
         
         <div class="timeline">
             
@@ -266,9 +275,9 @@
             </div>
             
             <!-- Item 1: Harriet E. Wilson -->
-            <div class="timeline-item" onclick="openModal('1859', 'Harriet E. Wilson publishes Our Nig', 'Considered the first novel by an African American woman, published anonymously. It sold poorly and vanished from public view for over a century, only rediscovered in the 1980s by scholar Henry Louis Gates Jr. This highlights the systematic erasure of early Black literary voices.')">
+            <div class="timeline-item" onclick="openModal('1859', 'Harriet E. Wilson publishes Our Nig', 'Considered the first novel by an African American woman, published anonymously. The systematic erasure of early Black literary voices is highlighted by the fact that it sold badly, disappeared from public view for more than a century, and was only rediscovered in the 1980s by scholar Henry Louis Gates Jr.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1859 — Harriet E. Wilson's Our Nig</h3>
                         <p class="text-gray-700">The first novel by an African American woman is published anonymously. It goes largely unnoticed and is lost for over a century.</p>
@@ -279,7 +288,7 @@
             <!-- Item 2: Rebecca Lee Crumpler -->
             <div class="timeline-item" onclick="openModal('1864', 'Dr. Rebecca Lee Crumpler', 'Became the first African American woman to earn a medical degree (MD) in the United States. Despite her groundbreaking achievement and her work providing medical care to formerly enslaved people, her legacy was largely forgotten, and her grave remained unmarked for 125 years.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1864 — Dr. Rebecca Lee Crumpler</h3>
                         <p class="text-gray-700">Becomes the first African American woman to earn a medical degree (MD). Her legacy is largely forgotten until the 21st century.</p>
@@ -290,7 +299,7 @@
             <!-- Item 3: Edmonia Lewis -->
             <div class="timeline-item" onclick="openModal('1867', 'Edmonia Lewis\'s Forever Free', 'Sculptor Mary Edmonia Lewis, of African American and Native American descent, created this powerful work in Rome to celebrate Black emancipation. Despite international acclaim during her life, she died in obscurity, and many of her works were lost, reflecting how the art world marginalized artists of color.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1867 — Edmonia Lewis's Forever Free</h3>
                         <p class="text-gray-700">The African American and Native American sculptor crafts one of the first works of art celebrating Black emancipation in Rome. She later dies in obscurity.</p>
@@ -301,7 +310,7 @@
             <!-- Item: Lewis Latimer (Added based on Technology Page) -->
             <div class="timeline-item" onclick="openModal('1882', 'Lewis Latimer\'s Carbon Filament', 'Lewis Latimer patented a method for manufacturing carbon filaments, which significantly extended the life of incandescent light bulbs. This innovation made electric lighting practical and affordable for the general public, yet he is often overshadowed by Thomas Edison.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1882 — Lewis Latimer's Filament</h3>
                         <p class="text-gray-700">Patents the carbon filament, making the incandescent light bulb practical and affordable for mass use.</p>
@@ -312,7 +321,7 @@
             <!-- Item: Sarah Boone (Added based on Technology Page) -->
             <div class="timeline-item" onclick="openModal('1892', 'Sarah Boone\'s Ironing Board', 'Sarah Boone, born into slavery, patented an improved ironing board designed to effectively press the curves of women\'s clothing. Her invention made a common household task much more efficient, yet she is rarely mentioned in popular histories of invention.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1892 — Sarah Boone's Patent</h3>
                         <p class="text-gray-700">Patents an improved ironing board, one of the first African American women to receive a patent for a household invention.</p>
@@ -323,7 +332,7 @@
             <!-- Item: Granville Woods (Added based on Technology Page) -->
             <div class="timeline-item" onclick="openModal('1887', 'Granville T. Woods\'s Multiplex Telegraph', 'Known as the \'Black Edison,\' Woods patented the Synchronous Multiplex Railway Telegraph, which allowed communication between moving trains and stations. This was a critical safety innovation for the rail industry, though his contributions were often challenged by figures like Edison.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1887 — Granville Woods's Telegraph</h3>
                         <p class="text-gray-700">Patents the Synchronous Multiplex Railway Telegraph, preventing train collisions and revolutionizing rail safety.</p>
@@ -340,7 +349,7 @@
             <!-- Item: Alonzo Herndon (Added based on Social Movements Page) -->
             <div class="timeline-item" onclick="openModal('1905', 'Alonzo Herndon\'s Atlanta Life', 'Born into slavery, Herndon became a barber and then founded the Atlanta Life Insurance Company. He became Atlanta\'s first Black millionaire, using his wealth to support Black community resilience and entrepreneurship in the face of Jim Crow.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1905 — Alonzo Herndon's Success</h3>
                         <p class="text-gray-700">Former slave Alonzo Herndon founds what becomes Atlanta Life Insurance, building Black economic resilience.</p>
@@ -351,7 +360,7 @@
             <!-- Item 4: Bessie Coleman -->
             <div class="timeline-item" onclick="openModal('1921', 'Bessie Coleman Earns Pilot License', 'Denied entry to U.S. flight schools because of her race and gender, Bessie Coleman traveled to France to earn her pilot\'s license. She became the first African American and Native American woman pilot, inspiring generations despite systemic barriers.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1921 — Bessie Coleman's License</h3>
                         <p class="text-gray-700">Forces to train in France, Coleman becomes the first Black and Native American female pilot.</p>
@@ -362,7 +371,7 @@
             <!-- Item 5: Alice Ball -->
             <div class="timeline-item" onclick="openModal('1916', 'Alice Augusta Ball\'s Leprosy Treatment', 'Alice Ball developed the first injectable treatment for leprosy (Hansen\'s disease) by isolating active compounds from chaulmoogra oil. After her death at age 24, a male colleague took credit for her work, naming it the \'Dean Method.\'')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1916 — Alice Augusta Ball's Stolen Cure</h3>
                         <p class="text-gray-700">Ball created the first effective injectable leprosy treatment. Following her death, her work is misattributed (to incorrectly indicate the cause, origin, or creator of something).</p>
@@ -373,7 +382,7 @@
             <!-- Item 6: Harlem Renaissance -->
             <div class="timeline-item" onclick="openModal('1920s', 'The Harlem Renaissance', 'A blossoming of African American culture, particularly in the creative arts. While it produced legendary works, many contributors were under-credited or their styles were co-opted by white artists for mainstream commercial success.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1920s — Harlem Renaissance</h3>
                         <p class="text-gray-700">The movement grows, but many of its contributors are under-credited or co-opted in mainstream American cultural narratives.</p>
@@ -384,7 +393,7 @@
             <!-- Item: Green Book (Added based on Social Movements Page) -->
             <div class="timeline-item" onclick="openModal('1936', 'The Green Book Published', 'Victor Hugo Green publishes the first \'Negro Motorist Green Book,\' a guide to safe travel for Black Americans during segregation. It was a crucial tool for mobility and survival, listing businesses that would serve Black customers.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1936 — The Green Book</h3>
                         <p class="text-gray-700">Victor Green creates a travel guide to help Black drivers traverse segregation safely.</p>
@@ -395,7 +404,7 @@
             <!-- Item: Mississippi Survey (Added based on Censorship Page) -->
             <div class="timeline-item" onclick="openModal('1938', 'Mississippi Textbook Censorship', 'A survey found that students in Mississippi could go from 1st to 12th grade without seeing a single named Black person in their textbooks. This deliberate erasure by segregationist school boards distorted history for generations.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content bg-red-50 border-l-4 border-red-700">
                         <h3 class="font-bold text-lg text-red-700 mb-2">1938 — Mississippi Textbook Survey</h3>
                         <p class="text-gray-700">A survey discovered that Black individuals are completely erased from school materials, and students are taught a censored history.</p>
@@ -412,7 +421,7 @@
             <!-- Item 8: Henrietta Lacks -->
             <div class="timeline-item" onclick="openModal('1951', 'Henrietta Lacks\'s Cells Harvested', 'Henrietta Lacks\'s cancer cells were taken without her consent at Johns Hopkins. These cells, known as HeLa, became the first immortal human cell line and revolutionized medicine, yet her family remained unaware and uncompensated for decades.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1951 — Henrietta Lacks's Cells</h3>
                         <p class="text-gray-700">Lacks's cancer cells (HeLa line) are harvested without her consent. They revolutionize medicine, but her contribution remains obscure.</p>
@@ -423,7 +432,7 @@
             <!-- Item: Dr. Jane Cooke Wright (Added based on Science Page) -->
             <div class="timeline-item" onclick="openModal('1951', 'Dr. Jane Cooke Wright\'s Chemotherapy', 'Dr. Wright demonstrated the efficacy of methotrexate in treating solid tumors, pioneering the use of chemotherapy. She was a founding member of ASCO, yet her pivotal role is often missing from general medical histories.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1951 — Chemotherapy Pioneer</h3>
                         <p class="text-gray-700">Dr. Jane Cooke Wright pioneers the use of chemotherapy for solid tumors.</p>
@@ -434,7 +443,7 @@
             <!-- Item 10: Hurston's Death & Rediscovery -->
             <div class="timeline-item" onclick="openModal('1960', 'Zora Neale Hurston Dies', 'The celebrated author and anthropologist died in poverty and was buried in an unmarked grave. Her literary genius was largely dismissed by male academics of her time, and she remained obscure until Alice Walker revived interest in her work in the 1970s.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1960 — Zora Neale Hurston Dies</h3>
                         <p class="text-gray-700">Hurston dies in poverty. Her gravesite is unmarked until rediscovered in the 1970s.</p>
@@ -445,7 +454,7 @@
             <!-- Item: Katherine Johnson (Added based on Science Page) -->
             <div class="timeline-item" onclick="openModal('1962', 'Katherine Johnson Verifies Orbit', 'NASA mathematician Katherine Johnson manually verified the orbital calculations for John Glenn\'s Friendship 7 mission. Her critical role in the Space Race was largely unknown to the public until the book and film Hidden Figures.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1962 — Katherine Johnson at NASA</h3>
                         <p class="text-gray-700">Manually verifies orbital calculations for John Glenn's spaceflight, critical to mission success.</p>
@@ -456,7 +465,7 @@
             <!-- Item 11: Black Panther Clinics -->
             <div class="timeline-item" onclick="openModal('1960s-70s', 'Black Panther Party Survival Programs', 'The BPP established free medical clinics and breakfast programs to serve neglected Black communities. These programs filled a void left by the state but were often ignored or vilified in mainstream media accounts.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1960s–70s — BPP Health Clinics</h3>
                         <p class="text-gray-700">The Black Panther Party opens free health clinics, providing critical services overlooked by the state.</p>
@@ -467,7 +476,7 @@
             <!-- Item: Jerry Lawson (Added based on Technology Page) -->
             <div class="timeline-item" onclick="openModal('1976', 'Jerry Lawson\'s Video Game Cartridge', 'Jerry Lawson led the team that created the Fairchild Channel F, the first console to use interchangeable video game cartridges. This innovation defines the gaming industry today.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1976 — Video Game Cartridge</h3>
                         <p class="text-gray-700">Jerry Lawson invents the interchangeable video game cartridge system.</p>
@@ -478,7 +487,7 @@
             <!-- Item: Dr. Valerie Thomas (Added based on Technology Page) -->
             <div class="timeline-item" onclick="openModal('1980', 'Dr. Valerie Thomas Patents Illusion Transmitter', 'NASA physicist Dr. Valerie Thomas received a patent for her illusion transmitter, a device using concave mirrors to create 3D optical illusions. Her work continues to influence 3D imaging technology.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1980 — Illusion Transmitter</h3>
                         <p class="text-gray-700">Dr. Valerie Thomas patents a 3D imaging device still used by NASA today.</p>
@@ -495,7 +504,7 @@
             <!-- Item: Mark Dean (Added based on Technology Page) -->
             <div class="timeline-item" onclick="openModal('1981', 'Dr. Mark Dean & The IBM PC', 'Dr. Mark Dean holds 3 of the 9 original patents for the IBM Personal Computer. He co-created the ISA bus, which allows devices like printers and monitors to be plugged directly into computers.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1981 — Dr. Mark Dean & IBM PC</h3>
                         <p class="text-gray-700">Co-created the ISA bus architecture, which is important to personal computing.</p>
@@ -504,20 +513,20 @@
             </div>
             
             <!-- Item 12: Wilson's Rediscovery -->
-            <div class="timeline-item" onclick="openModal('1980s', 'Rediscovery of Our Nig', 'Scholar Henry Louis Gates Jr. authenticated and republished Harriet E. Wilson\'s novel, restoring a critical piece of Black literary history that had been lost for over 100 years.')">
+            <div class="timeline-item" onclick="openModal('1980s', 'Rediscovery of Our Nig', 'Scholar Henry Louis Gates Jr. authenticated and republished Harriet E. Wilson's novel, restoring a crucial piece of Black literary history that had been lost for more than a century.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1980s — Our Nig Rediscovery</h3>
-                        <p class="text-gray-700">Harriet E. Wilson’s novel is rediscovered, bringing attention to **early Black literary voices**.</p>
+                        <p class="text-gray-700">Harriet E. Wilson’s novel is rediscovered, bringing attention to early Black literary voices.</p>
                     </div>
                 </div>
             </div>
 
             <!-- Item: Ellen Ochoa (Added based on Science Page) -->
-            <div class="timeline-item" onclick="openModal('1993', 'Ellen Ochoa in Space', 'Dr. Ellen Ochoa became the first Hispanic woman in space aboard the Shuttle Discovery. An engineer and inventor, she later became the Director of the Johnson Space Center.')">
+            <div class="timeline-item" onclick="openModal('1993', 'Ellen Ochoa in Space', 'Dr. Ellen Ochoa became the first Hispanic woman in space aboard the Shuttle Discovery. She was an inventor and engineer who went on to become the director of the Johnson Space Center.') ">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">1993 — Ellen Ochoa in Space</h3>
                         <p class="text-gray-700">Dr. Ellen Ochoa becomes the first Hispanic woman to go to space.</p>
@@ -528,7 +537,7 @@
             <!-- Item 14: Crumpler's Grave Marker -->
             <div class="timeline-item" onclick="openModal('2020', 'Rebecca Crumpler Honored', '125 years after her death, Dr. Rebecca Lee Crumpler finally received a headstone for her grave in Hyde Park, Massachusetts, thanks to a fundraising effort to honor her legacy.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content">
                         <h3 class="font-bold text-lg text-brand-brown mb-2">2020 — Crumpler Memorial</h3>
                         <p class="text-gray-700">Dr. Rebecca Lee Crumpler’s grave receives a memorial marker, 125 years after her death.</p>
@@ -539,7 +548,7 @@
             <!-- Item 15: Modern Book Bans -->
             <div class="timeline-item" onclick="openModal('2020s', 'Surge in Book Bans', 'A coordinated wave of censorship has swept US schools, targeting books by Black authors or about race and racism. Over 300 unique titles were challenged in a single year, attempting to erase diverse perspectives from education.')">
                 <div class="timeline-dot"></div>
-                <div class="md:left-item right-item timeline-item-container">
+                <div class="right-item timeline-item-container">
                     <div class="timeline-item-content bg-red-50 border-l-4 border-red-700">
                         <h3 class="font-bold text-lg text-red-700 mb-2">2020s — Modern Book Bans</h3>
                         <p class="text-gray-700">Hundreds of books by or about Black authors are removed, continuing the trend of erasure.</p>
@@ -550,7 +559,7 @@
             <!-- Item 16: Stop WOKE Act -->
             <div class="timeline-item" onclick="openModal('2022', 'Florida\'s \'Stop WOKE Act\'', 'Legislation aimed at restricting how race and gender are taught in schools and workplaces. This act exemplifies modern legislative attempts to censor discussions of systemic racism.')">
                 <div class="timeline-dot"></div>
-                <div class="md:right-item left-item timeline-item-container">
+                <div class="left-item timeline-item-container">
                     <div class="timeline-item-content bg-red-50 border-l-4 border-red-700">
                         <h3 class="font-bold text-lg text-red-700 mb-2">2022 — "Stop WOKE Act"</h3>
                         <p class="text-gray-700">Florida legislation restricts teaching about race, sparking a national censorship debate.</p>
